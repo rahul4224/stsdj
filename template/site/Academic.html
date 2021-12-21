@@ -1,0 +1,66 @@
+{% extends 'core\siteBase.html' %}
+{% block title %}{{block.super}} - Academic
+{% endblock title %}
+{% block content %}
+<div class="col-sm-9 col-md-12">
+    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm custom-tabs">
+
+        <div class="tab-content">
+            <div class="timeline timeline-inverse">
+                <!-- timeline time label -->
+                <div class="time-label">
+
+
+                </div>
+                <!-- /.timeline-label -->
+                <!-- timeline item -->
+                <div>
+
+                    <h4 style="text-align:center;"><b>Subject Marks & Attendance</b></h4>
+
+                    <div class="container-fluid">
+                        <div class="col-md-12">
+                            <div class="card">
+
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+
+                                                <th>Subject</th>
+                                                <th>Semester</th>
+                                                <th>Attendence</th>
+                                                <th>Marks</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for i in StudentMarks %}
+                                            <tr>
+                                                <td>{{i.subject}}</td>
+                                                <td>{{i.studentsemester}}</td>
+                                                <td>{{i.subjectattendence}}/{{i.subjectclass}}</td>
+                                                <td>{{i.subjectscore}}/{{i.subjectmarks}}</td>
+                                                <td>{{i.date}}</td>
+
+                                            </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="https://campaigns.learningsciences.com/wp-content/uploads/2020/11/PP-header-icons-04-1.png"
+    type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/quicksand.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/toastr.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/toastr/toastr.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style1.css' %}">
+
+
+
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>{% block title %} STS {% endblock title %}</title>
+</head>
+
+<body class="login-body">
+
+
+
+    <div class="container-fluid login-wrapper">
+        <div class="login-box">
+            <h1 class="text-center mb-5"><i class="fas fa-graduation-cap text-primary"></i> Student Tracker System</h1>
+            {% block content %}
+
+            {% endblock content %}
+        </div>
+    </div <script src="{% static 'assets/js/jquery.min.js' %}">
+    </script>
+    <script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/toastr/toastr.min.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+
+    {% block script %}
+    {% endblock script %}
+    {% if messages %}
+
+    {% for message in messages %}
+
+    {% if message.tags == 'success'%}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+
+    {% elif message.tags == 'info' %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+
+    {% elif message.tags == 'warning' %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+
+    {% elif message.tags == 'error' %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+
+    {% if form.errors %}
+    <script type=text/javascript>toastr.error('{{ form.errors|escape }}')</script>
+    {% endif %}
+
+</body>
+
+</html>

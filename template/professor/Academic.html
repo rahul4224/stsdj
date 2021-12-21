@@ -1,0 +1,207 @@
+{% extends 'core\teacherBase.html' %}
+{% block title %}{{block.super}} - Academic
+{% endblock title %}
+{% block content %}
+<div class="row mt-3">
+  <!--User profile sidebar-->
+  <div class="col-sm-12 col-md-4">
+    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
+      <div class="card-body">
+        <div class="media">
+          <img class="align-self-center mr-3 rounded-circle" src="{{studentdetails.profilepic.url}}" width="80px"
+            height="80px" alt="Generic placeholder image">
+          <div class="media-body">
+            <h6 class="mt-0"><strong>{{studentdetails.first_name}} {{studentdetails.last_name}}</strong></h6>
+            <button type="button" class="btn btn-primary">
+              <i class="fa fa-user"></i> Student
+            </button>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+      </div>
+      <div class="mb-3">
+        <div class="row user-about">
+          <div class="col-sm-4 col-4 border-right text-center">
+
+          </div>
+          <div class="col-sm-6 col-6 text-center">
+
+          </div>
+          <div class="col-sm-6 col-6 border-left text-center">
+
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="dropdown-divider"></div>
+  
+        <div class="mb-3">
+          <h6>Year</h6>
+          <h5>{{StudentData.year}}</h5>
+  
+        </div> -->
+      <!-- <div class="dropdown-divider"></div>
+  
+        <div class="mb-3">
+          <h6>Semester</h6>
+          <h5>{{StudentData.semester}}</h5>
+  
+        </div> -->
+      <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>Department</b></h6>
+        <h5>{{studentdetails.dept}}</h5>
+
+      </div>
+      <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>Univ.Roll</b></h6>
+        <h5>{{studentdetails.enrollment}}</h5>
+
+      </div>
+
+      <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>Year</b></h6>
+        <h5>{{studentdetails.year}}</h5>
+
+      </div>
+
+      <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>Semester</b></h6>
+        <h5>{{studentdetails.semester}}</h5>
+
+      </div>
+    </div>
+  </div>
+  <!--/User profile sidebar-->
+
+  <!--User profile content-->
+  <div class="col-sm-12 col-md-8">
+    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm custom-tabs">
+
+      <nav>
+        <div class="nav nav-tabs nav-fill" id="nav-customContent" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home" data-toggle="tab" href="#custom-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">
+            <i class="fas fa-user-edit"></i> Marks And Attendance
+          </a>
+
+
+
+        </div>
+      </nav>
+      <div class="tab-content py-3 px-3 px-sm-0" id="nav-customContent">
+        <div class="tab-pane fade show active p-4" id="custom-home" role="tabpanel" aria-labelledby="nav-home">
+          <div class="card-body">
+            <form class="form-horizontal" action="" method="POST">
+              {% csrf_token %}
+              <div class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">Department: </label>
+                <div class="col-sm-10">
+                  {{AcademicForm.studentdept}}
+                  <!-- <input type="text" class="form-control" id="inputName" placeholder="Name"> -->
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputEmail" class="col-sm-2 col-form-label">Year</label>
+                <div class="col-sm-10">
+                  {{AcademicForm.studentyear}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputName2" class="col-sm-2 col-form-label">Semester</label>
+                <div class="col-sm-10">
+                  {{AcademicForm.studentsemester}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputName2" class="col-sm-2 col-form-label">subject</label>
+                <div class="col-sm-10">
+                  {{AcademicForm.subject}}
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="inputName2" class="col-sm-2 col-form-label">Student Attendance</label>
+                <div class="col-sm-4">
+                  {{AcademicForm.subjectattendence}}
+                </div>
+                <label for="inputName2" class="col-sm-2 col-form-label">T.Attendance</label>
+                <div class="col-sm-4">
+                  {{AcademicForm.subjectclass}}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="inputName2" class="col-sm-2 col-form-label">Student Marks</label>
+                <div class="col-sm-4">
+                  {{AcademicForm.subjectscore}}
+                </div>
+                <label for="inputName2" class="col-sm-2 col-form-label">Total Marks</label>
+                <div class="col-sm-4">
+                  {{AcademicForm.subjectmarks}}
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
+                  <button type="submit" class="btn btn-danger">Submit</button>
+                </div>
+              </div>
+            </form>
+
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+
+                  <th>Subject</th>
+                  <th>Semester</th>
+                  <th>Attendence</th>
+                  <th>Marks</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in StudentMarks %}
+                <tr>
+                  <td>{{i.subject}}</td>
+                  <td>{{i.studentsemester}}</td>
+                  <td>{{i.subjectattendence}}/{{i.subjectclass}}</td>
+                  <td>{{i.subjectscore}}/{{i.subjectmarks}}</td>
+                  <td>{{i.date}}</td>
+
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <!--Update Password form-->
+
+        <!--/Horizontal form-->
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+{% endblock content %}

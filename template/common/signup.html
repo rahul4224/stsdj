@@ -1,0 +1,114 @@
+{% extends 'core\authBase.html' %}
+{% block title %}{{block.super}} - SignUp
+{% endblock title %}
+{% block content %}
+    <div class="row">
+                <div class="col-md-6 col-sm-6 col-12 login-box-info">
+                    <h3 class="mb-2">Sign up </br><small >&nbsp&nbsp&nbsp&nbsp&nbspCreate new account  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class='fas fa-arrow-circle-right' style='font-size:45px;color:rgb(110, 230, 54)'></i></small>
+                    </h3></br></br>
+
+
+                    <h3 class="mb-4">Sign in</h3>
+                    <p class="mb-4">To signin , Please click on Login Here or Create new Account  .</p>
+                    <p class="text-center"><a href="{% url 'signin' %}" class="btn btn-light">Login here</a></p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12 login-box-form p-4">
+                    
+                    
+                    <form action="" method="POST" class="mt-2">                    
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-6">                       
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            </div>
+                            {{form.first_name}}
+                        </div>
+                        </div>
+                        <div class="col-sm-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                            </div>
+                            {{form.last_name}}
+                        </div>
+                        </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                            </div>
+                            {{form.username}}
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                            </div>
+                            {{form.email}}
+                        </div>
+
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                            </div>
+                            {{form.password1}}
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                            </div>
+                           {{form.password2}}
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <!-- checkbox -->
+                                <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                        
+                                        <label >User Type </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <!-- checkbox -->
+                                <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                        {{form.is_student}}
+                                        <label for="checkboxSuccess1">Student</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <!-- radio -->
+                                <div class="form-group clearfix">
+                                    <div class="icheck-success d-inline">
+                                        {{form.is_teacher}}
+                                        <label for="checkboxSuccess2">Teacher</label>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                          
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Submit" class="btn btn-theme btn-block p-2 mb-1"/>
+                        </div>
+                    </form>
+                </div>
+    </div>
+
+{% endblock content %} 
+{% block script %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script>
+    $(".cbl").change(function() {
+    $(".cbl").prop('checked', false);
+    $(this).prop('checked', true);
+         });
+    </script>
+{% endblock script %}

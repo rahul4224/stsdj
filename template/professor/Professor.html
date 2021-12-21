@@ -1,0 +1,180 @@
+{% extends 'core\teacherBase.html' %}
+{% block title %}{{block.super}} - Profile Professor
+{% endblock title %}
+{% block content %}
+<div class="row mt-3">
+  <!--User profile sidebar-->
+  <div class="col-sm-12 col-md-4">
+    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
+
+      <div class="mb-3">
+        <div class="row user-about">
+          <div class="col-sm-4 col-4 border-right text-center">
+
+          </div>
+          <div class="col-sm-4 col-4 text-center">
+
+          </div>
+          <div class="col-sm-4 col-4 border-left text-center">
+
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6>Year</h6>
+        <h5>{{StudentData.year}}</h5>
+
+      </div> -->
+      <!-- <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6>Semester</h6>
+        <h5>{{StudentData.semester}}</h5>
+
+      </div> -->
+
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>Department Teacher</b></h6>
+        <h5>{{StudentData.dept}}</h5>
+
+      </div>
+      <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>Email ID</b></h6>
+        <h5>{{StudentData.email}}</h5>
+
+      </div>
+
+      <div class="dropdown-divider"></div>
+
+      <div class="mb-3">
+        <h6 style="color:blue;"><b>College Id/ Enrollment</b></h6>
+        <h5>{{StudentData.enrollment}}</h5>
+
+      </div>
+    </div>
+  </div>
+  <!--/User profile sidebar-->
+
+  <!--User profile content-->
+  <div class="col-sm-12 col-md-8">
+    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm custom-tabs">
+
+      <nav>
+        <div class="nav nav-tabs nav-fill" id="nav-customContent" role="tablist">
+          <a class="nav-item nav-link active" id="nav-home" data-toggle="tab" href="#custom-home" role="tab"
+            aria-controls="nav-home" aria-selected="true">
+            <i class="fas fa-user-edit"></i><b> Edit</b>
+          </a>
+
+
+
+        </div>
+      </nav>
+      <div class="tab-content py-3 px-3 px-sm-0" id="nav-customContent">
+        <div class="tab-pane fade show active p-4" id="custom-home" role="tabpanel" aria-labelledby="nav-home">
+          <form class="form-horizontal" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group row">
+              <label for="inputName2" class="col-sm-2 col-form-label">First Name</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.first_name}}
+              </div>
+              <label for="inputName2" class="col-sm-2 col-form-label">Last Name</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.last_name}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputName2" class="col-sm-2 col-form-label">User Name</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.username}}
+              </div>
+              <label for="inputName2" class="col-sm-2 col-form-label">Email </label>
+              <div class="col-sm-4">
+                {{UserProfileForm.email}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputName2" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.password1}}
+              </div>
+              <label for="inputName2" class="col-sm-2 col-form-label">Confirm Password</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.password2}}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputName2" class="col-sm-2 col-form-label">Coll.ID</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.enrollment}}
+              </div>
+              <label for="inputName2" class="col-sm-2 col-form-label">Prof.Dept</label>
+              <div class="col-sm-4">
+                {{UserProfileForm.dept}}
+              </div>
+            </div>
+            <!-- <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Join Year</label>
+                          <div class="col-sm-4">
+                            {{UserProfileForm.year}}
+                          </div>
+                        </div> -->
+
+
+
+            <div class="form-group row">
+              <label for="inputSkills" class="col-sm-2 col-form-label">Profile Pic
+                Preview</label>
+              <div class="col-sm-4">
+                <label for="customFile">
+                  <img class="profile-user-img img-fluid img-circle" id='previewpic'
+                    src="{{StudentData.profilepic.url}}" alt="User profile picture">
+                </label>
+              </div>
+              {{UserProfileForm.profilepic}}
+            </div>
+            <div class="form-group row">
+              <div class="offset-sm-2 col-sm-10">
+                <button type="submit" class="btn btn-danger">Update Details</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--Update Password form-->
+
+        <!--/Horizontal form-->
+      </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#previewpic')
+          .attr('src', e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+</script>
+{% endblock script %}

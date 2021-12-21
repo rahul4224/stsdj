@@ -1,0 +1,73 @@
+{% extends 'core\teacherBase.html' %}
+{% block title %}{{block.super}} - Student
+{% endblock title %}
+{% block content %}
+<div class="card-body">
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title" style=text-align:center><b>All Student</b></h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Roll</th>
+                                    <th>Image</th>
+                                    <th>Semester</th>
+                                    <th>Year</th>
+                                    <th>Dept</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in allstudent %}
+                                <tr>
+                                    <td>{{i.first_name}} {{i.last_name}}</td>
+                                    <td>{{i.enrollment}}</td>
+                                    <td><img alt="Avatar" class="table-avatar" src="{{i.profilepic.url}}" height="50"
+                                            width="50"></td>
+                                    <td>{{i.semester}}</td>
+                                    <td>{{i.year}}</td>
+                                    <td>{{i.dept}}</td>
+
+
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-success btn-sm" href="{% url 'addacademic' pk=i.id %}">
+                                            <i class="fas fa-plus-user">
+                                            </i>
+                                            Give Marks
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+{% endblock content %}
+{% block script %}
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+{% endblock script %}

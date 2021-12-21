@@ -1,0 +1,44 @@
+{% extends 'core\authBase.html' %}
+{% block title %}{{block.super}} - Login
+{% endblock title %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-6 col-sm-6 col-12 login-box-info">
+            <h3 class="mb-4">Sign up</h3>
+            <p class="mb-4">If you are new to Student Tracker System website, Please register yourself. So that
+                you can
+                get access to Tracker system.</p>
+            <p class="text-center"><a href="{% url 'signup' %}" class="btn btn-light">Register here</a></p>
+        </div>
+        <div class="col-md-6 col-sm-6 col-12 login-box-form p-4">
+            <h3 class="mb-2">Login</h3>
+            <small class="text-muted bc-description">Sign in with your credentials</small>
+            <form action="" class="mt-2" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control mt-0" placeholder="UserName" aria-label="email" aria-describedby="basic-addon1" name= "username">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <input type="password" name="password" class="form-control mt-0" placeholder="Password" aria-label="Password"
+                        aria-describedby="basic-addon1">
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-theme btn-block p-2 mb-1" type="submit">Login</button>
+                    <!-- <a href="/forget">
+                        <small class="text-theme"><strong>Forgot password?</strong></small>
+                    </a> -->
+                </div>
+            </form>
+        </div>
+    
+    </div> 
+{% endblock content %}
