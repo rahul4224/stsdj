@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ivnnoapelvaq1+%t=w9zc(qwn7=bcpoj=evvv0q_1)ep5e0m94
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh']
 
 
 # Application definition
@@ -148,3 +148,4 @@ CKEDITOR_CONFIGS={
         'width':'100%'
     }
 }
+
